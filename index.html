@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zomato Styled Food Order</title>
+  <link rel="icon" href="logo/Zomoto_Logo-1.png">
+  <style>
+    :root {
+      --primary: #e63946;
+      --accent: #ffb703;
+      --bg-light: #fff8f0;
+      --text-dark: #1d3557;
+      --card-bg: #ffffff;
+      --button-bg: #1e90ff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 2.5em;
+    }
+
+    header p {
+      font-size: 1em;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .category-title {
+      font-size: 1.8em;
+      margin: 30px 0 15px;
+      border-left: 6px solid var(--accent);
+      padding-left: 10px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+
+    .card p {
+      font-size: 0.95em;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    .card button {
+      padding: 8px 16px;
+      background-color: var(--button-bg);
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 0.9em;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+
+    .card button:hover {
+      background-color: #0f5c8c;
+    }
+
+    .cart {
+      margin-top: 40px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .cart h2 {
+      margin-bottom: 10px;
+    }
+
+    #cart-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    #cart-list li {
+      border-bottom: 1px solid #ddd;
+      padding: 6px 0;
+    }
+
+    .total {
+      font-weight: bold;
+      font-size: 1.1em;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #999;
+      font-size: 0.9em;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🍴 Food Junction</h1>
+  <p>Order delicious food, drinks & desserts online</p>
+</header>
+
+<div class="container">
+
+  <!-- 🥘 Main Dishes -->
+  <h2 class="category-title">🥘 Main Dishes</h2>
+  <div class="menu-grid">
+    <div class="card">
+      <h3>Butter Chicken</h3>
+      <p>Rich & creamy North Indian delight</p>
+      <p>₹250</p>
+      <button onclick="addToCart('Butter Chicken', 250)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <h3>Paneer Tikka</h3>
+      <p>Spicy grilled cottage cheese</p>
+      <p>₹200</p>
+      <button onclick="addToCart('Paneer Tikka', 200)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <h3>Veg Biryani</h3>
+      <p>Fragrant basmati rice with veggies</p>
+      <p>₹180</p>
+      <button onclick="addToCart('Veg Biryani', 180)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- 🍨 Ice Creams -->
+  <h2 class="category-title">🍨 Ice Creams</h2>
+  <div class="menu-grid">
+    <div class="card">
+      <h3>Chocolate Sundae</h3>
+      <p>With hot fudge & nuts</p>
+      <p>₹120</p>
+      <button onclick="addToCart('Chocolate Sundae', 120)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <h3>Vanilla Cone</h3>
+      <p>Classic soft serve</p>
+      <p>₹60</p>
+      <button onclick="addToCart('Vanilla Cone', 60)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <h3>Strawberry Cup</h3>
+      <p>Sweet & refreshing</p>
+      <p>₹90</p>
+      <button onclick="addToCart('Strawberry Cup', 90)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- 🥤 Juices -->
+  <h2 class="category-title">🥤 Juices</h2>
+  <div class="menu-grid">
+    <div class="card">
+      <h3>Mango Juice</h3>
+      <p>Summer favourite</p>
+      <p>₹70</p>
+      <button onclick="addToCart('Mango Juice', 70)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <h3>Watermelon Juice</h3>
+      <p>Fresh & hydrating</p>
+      <p>₹80</p>
+      <button onclick="addToCart('Watermelon Juice', 80)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <h3>Orange Juice</h3>
+      <p>100% natural</p>
+      <p>₹75</p>
+      <button onclick="addToCart('Orange Juice', 75)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- ⭐ Specials -->
+  <h2 class="category-title">⭐ Special Items</h2>
+  <div class="menu-grid">
+    <div class="card">
+      <h3>Cheese Burst Pizza</h3>
+      <p>Loaded with gooey cheese</p>
+      <p>₹300</p>
+      <button onclick="addToCart('Cheese Burst Pizza', 300)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <h3>Chicken Kebab Platter</h3>
+      <p>Assorted grilled kebabs</p>
+      <p>₹350</p>
+      <button onclick="addToCart('Chicken Kebab Platter', 350)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <h3>Paneer Masala Dosa</h3>
+      <p>South Indian twist</p>
+      <p>₹220</p>
+      <button onclick="addToCart('Paneer Masala Dosa', 220)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Cart Section -->
+  <div class="cart">
+    <h2>🛒 Your Order</h2>
+    <ul id="cart-list"></ul>
+    <p class="total">Total: ₹<span id="total">0</span></p>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 Food Junction | Design Inspired by Zomato UI
+</footer>
+
+<script>
+  let total = 0;
+  const cartList = document.getElementById("cart-list");
+  const totalEl = document.getElementById("total");
+
+  function addToCart(item, price) {
+    const li = document.createElement("li");
+    li.textContent = `${item} - ₹${price}`;
+    cartList.appendChild(li);
+    total += price;
+    totalEl.textContent = total;
+  }
+</script>
+
+</body>
+</html>
